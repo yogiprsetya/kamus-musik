@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import data from '../data-istilah.json'
 
 export default {
     data() {
@@ -24,10 +24,7 @@ export default {
         }
     },
     mounted() {
-        axios.get("../../static/data-istilah.json")
-		.then(response => {
-            this.tampilkanArti = response.data.find(item => item.id == this.urlParams[this.urlParams.length-1])
-        })
+        this.tampilkanArti = data.find(item => item.id == this.urlParams[this.urlParams.length-1])
     },
     methods: {
         copyArti(containerid) {
