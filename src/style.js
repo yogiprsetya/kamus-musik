@@ -47,4 +47,10 @@ module.exports = StyleSheet.create({
     fontSize: 19,
     fontWeight: '500'
   },
+
+  heading: {
+    fontSize: 21,
+    marginVertical: 13,
+    fontWeight: '500'
+  },
 })
