@@ -46,7 +46,9 @@ export default class Fintech extends Component<{}> {
         <ScrollView>
           {daftar.map(item => {
             return (
-              <TouchableOpacity style={s.container} key={item.id}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Detail', {itemId: item.id})}
+                style={s.container} key={item.id}
+              >
                 <Text style={s.istilah}>
                   {item.istilah}
                 </Text>

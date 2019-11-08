@@ -14,26 +14,13 @@ const KEYS_TO_FILTERS = ['id']
 export default class Detail extends Component<{}> {
   writeToClipboard = (istilah) => {
     Clipboard.setString(istilah)
-//  this.showToast()
-    // ToastAndroid.show('Copied to Clipboard', ToastAndroid.SHORT)
-
-
-  };
-
-  showToast = (istilah) => {
-    ToastAndroid.showWithGravity (
-      "Copied to Clipboard !!",
-      ToastAndroid.LONG,
-      ToastAndroid.BOTTOM,
-      25,
-      50
-    );
+    ToastAndroid.show('Copied to Clipboard', ToastAndroid.SHORT);
   }
 
   render() {
     return (
       <SafeAreaView style={s.body}>
-        {Istilah.filter(value => value.id == 1)
+        {Istilah.filter(value => value.id == JSON.stringify(this.props.navigation.getParam('itemId')))
           .map(value => (
             <View key={value.id} style={{marginHorizontal: 15}}>
               <Text style={s.heading}>{value.istilah}</Text>
@@ -41,7 +28,7 @@ export default class Detail extends Component<{}> {
 
               <View style={{width: 130}}>
                 <Button
-                  onPress={this.showToast}
+                  onPress={() => this.writeToClipboard(value.arti)}
                   title="Copy text"
                 />
               </View>
